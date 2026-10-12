@@ -1,0 +1,20 @@
+{
+  "name": "b2b-quotation-marketplace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "B2B RFQ marketplace — Phase 1: auth, subscriptions, website and admin panel",
+  "workspaces": [
+    "server",
+    "client",
+    "admin"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web,admin -c blue,green,magenta \"npm run dev -w server\" \"npm run dev -w client\" \"npm run dev -w admin\"",
+    "seed": "npm run seed -w server",
+    "build": "npm run build -w client && npm run build -w admin",
+    "start": "npm run start -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
