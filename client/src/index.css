@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/*
+ * Ranavista brand theme (from the Brand Color Guide).
+ * The standard Tailwind scales used across the app (slate, emerald, amber, red)
+ * are re-mapped to the brand palette, so every page follows the guide.
+ */
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  /* Primary */
+  --color-paper: #f7f3ea;   /* Warm Cream – page background */
+  --color-sand: #e8ddd1;    /* Soft Beige – cards, section backgrounds */
+  --color-ink: #1f2d2a;     /* Text Dark */
+  --color-muted: #6b7a78;   /* Text Medium */
+
+  /* Primary Dark Green #0D3B32 = brand-600 */
+  --color-brand-50: #eef4f1;
+  --color-brand-100: #d6e4de;
+  --color-brand-200: #afc9bf;
+  --color-brand-300: #8ba88e;
+  --color-brand-400: #5e8a7c;
+  --color-brand-500: #2f6555;
+  --color-brand-600: #0d3b32;
+  --color-brand-700: #0a3029;
+  --color-brand-800: #082620;
+  --color-brand-900: #061d18;
+  --color-brand-950: #041411;
+
+  /* Brand Gold #B89B6B = accent-500 */
+  --color-accent-50: #faf6ef;
+  --color-accent-100: #f3eadb;
+  --color-accent-200: #e6d5b8;
+  --color-accent-300: #d4bc94;
+  --color-accent-400: #c6aa7e;
+  --color-accent-500: #b89b6b;
+  --color-accent-600: #a0835a;
+  --color-accent-700: #85694a;
+  --color-accent-800: #6a533b;
+
+  /* Secondary accents */
+  --color-sage: #8ba88e;
+  --color-olive: #6b7f5b;
+  --color-earth: #a47148;
+  --color-info-50: #eef3f7;
+  --color-info-200: #c9d7e3;
+  --color-info-500: #5a7d9a;
+  --color-info-800: #3a5269;
+
+  /* Neutrals (re-mapped slate) */
+  --color-slate-50: #f8f7f4;
+  --color-slate-100: #f1f1f1;
+  --color-slate-200: #e0e0e0;
+  --color-slate-300: #cbd5d1;
+  --color-slate-400: #9aa5a2;
+  --color-slate-500: #6b7a78;
+  --color-slate-600: #495057;
+  --color-slate-700: #36423f;
+  --color-slate-800: #1f2d2a;
+  --color-slate-900: #1f2d2a;
+  --color-slate-950: #121a18;
+
+  /* Success Green #28A745 */
+  --color-emerald-50: #eaf6ed;
+  --color-emerald-100: #d3eedb;
+  --color-emerald-200: #b7e0c1;
+  --color-emerald-500: #34b553;
+  --color-emerald-600: #28a745;
+  --color-emerald-700: #1e7e34;
+  --color-emerald-800: #1a6b2c;
+
+  /* Warning Amber #F0AD4E */
+  --color-amber-50: #fef6ea;
+  --color-amber-100: #fce9cc;
+  --color-amber-200: #f8d9a8;
+  --color-amber-500: #f0ad4e;
+  --color-amber-600: #d68a1c;
+  --color-amber-700: #b2711a;
+  --color-amber-800: #8a5714;
+  --color-amber-900: #6e4510;
+
+  /* Soft Red #D9534F */
+  --color-red-50: #fbedec;
+  --color-red-100: #f6d6d5;
+  --color-red-200: #efc2c1;
+  --color-red-300: #e39c9a;
+  --color-red-400: #dd7673;
+  --color-red-500: #d9534f;
+  --color-red-600: #c9423e;
+  --color-red-700: #a93531;
+  --color-red-800: #8a2b28;
+  --color-red-900: #6e2220;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: #e6d5b8;
+    color: #1f2d2a;
+  }
+  :focus-visible {
+    outline: 2px solid #b89b6b;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-accent-600;
+  }
+  .gold-rule {
+    @apply block h-px w-14 bg-accent-500;
+  }
+  /* Long-form text (policies, articles) */
+  .prose-rv h2 {
+    @apply mt-10 scroll-mt-28 text-2xl font-semibold;
+  }
+  .prose-rv h3 {
+    @apply mt-6 text-lg font-semibold;
+  }
+  .prose-rv p,
+  .prose-rv li {
+    @apply text-[15px] leading-7 text-slate-600;
+  }
+  .prose-rv p {
+    @apply mt-3;
+  }
+  .prose-rv ul {
+    @apply mt-3 list-disc space-y-1.5 pl-5 marker:text-accent-500;
+  }
+  .prose-rv a {
+    @apply font-medium text-brand-600 underline decoration-accent-400 underline-offset-2 hover:decoration-brand-600;
+  }
+  .prose-rv strong {
+    @apply font-semibold text-ink;
+  }
+}
+
+/* Subtle lotus-line pattern used on dark sections */
+.bg-weave {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgb(184 155 107 / 0.16) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* Faint grid used behind light heroes */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(13 59 50 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(13 59 50 / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes rv-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: rv-fade-up 0.5s ease-out both;
+}
+.animate-pop {
+  animation: rv-fade-up 0.15s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-fade-up, .animate-pop { animation: none; }
+}
